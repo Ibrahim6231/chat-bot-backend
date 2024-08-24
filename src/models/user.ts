@@ -28,6 +28,11 @@ export const UserSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true  //hash password will be stored
+  },
+  role: {
+    type: String,
+    enum : ['Admin', 'User'],
+    default: 'User'
   }
 }, { timestamps: true, versionKey: false });
 

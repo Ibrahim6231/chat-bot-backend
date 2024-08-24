@@ -1,8 +1,10 @@
+import jwt from 'jsonwebtoken';
 import StandardError from 'standard-error';
 import validator from 'validator';
 import { LOGIN_TOKEN_EXPIRY } from '../../constants/common';
 import { Status } from '../../enum/httpStatus';
 
+const JWT_SECRET = process.env.JWT_SECRET;
 
 const getJwtPayload = (user: any) => {
   return {
@@ -40,8 +42,15 @@ const validateRegisterFields = ({ email, password, oauth, name }: any) => {
   }
 };
 
-
+const validateToken = (token: string) => {
+  const decode: any = jwt.verify(token, JWT_SECRET, (err, decoded) => {
+    if (err) return false
+    else return decoded
+  });
+  return decode;
+}
 export {
   getJwtPayload,
+  validateToken,
   validateRegisterFields
 }

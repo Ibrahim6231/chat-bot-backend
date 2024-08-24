@@ -38,4 +38,18 @@ export class Middleware {
             return res.status(error.code || 500).send({ status: false, message: error.message })
         }
     }
+
+    public authenticateAdmin = (req, res, next) => {
+        try {
+            if (req.user.role !== "Admin") {
+                throw new StandardError({
+                    message: 'Admin authorization required',
+                    code: Status.FORBIDDEN
+                });
+            }
+            next();
+        } catch (error) {
+            return res.status(error.code || Status.SERVICE_UNAVAILABLE).send({ message: error.message });
+        }
+    }
 }

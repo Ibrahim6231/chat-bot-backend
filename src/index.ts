@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import { api } from "./routes/api";
 import { envConfig } from "./config/config";
+import { inviteUsersHelper } from "./routes/admin/helper";
 
 config();
 const app = express();
