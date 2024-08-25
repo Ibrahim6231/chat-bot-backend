@@ -6,5 +6,6 @@ export class GroupRouter {
     constructor() {
         this.router = express.Router();
         this.router.post('/create', GroupRoutes.createGroup);
+        this.router.get('/list', GroupRoutes.getAllGroupsList);
     }
 }

@@ -6,7 +6,7 @@ import express from 'express';
 import { Status } from '../enum/httpStatus';
 import StandardError from 'standard-error';
 import { envConfig } from '../config/config';
-import { UserHelper } from '../routes/user/helpers';
+import { UserHelper } from '../routes/user/helper';
 
 
 export class Middleware {

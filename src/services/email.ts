@@ -22,7 +22,6 @@ export class EmailService {
        },
     };
     try {
-      console.log({mailOptions})
       await sgMail.send(mailOptions);
     } catch (e) {
       console.log(e.response.body, "Email Error");

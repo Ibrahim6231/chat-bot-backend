@@ -57,7 +57,6 @@ export class AuthRoutes {
       const generatedToken = jwt.sign(getJwtPayload(user), AuthRoutes.JWT_SECRET);
 
       const resObj: any = {};
-      resObj.code = Status.OK;
       resObj.data = { token: generatedToken, user };
       return res.status(Status.OK).send(resObj);
     } catch (error) {
@@ -83,7 +82,6 @@ export class AuthRoutes {
       const generatedToken = jwt.sign(getJwtPayload(user), AuthRoutes.JWT_SECRET);
 
       const resObj: any = {};
-      resObj.code = Status.OK;
       resObj.data = { token: generatedToken, user };
       return res.status(Status.OK).send(resObj)
     } catch (error: any) {
@@ -119,7 +117,6 @@ export class AuthRoutes {
       }
 
       const resObj: any = {
-        code: Status.OK,
         data: { email, role }
       };
       return res.status(Status.OK).send(resObj);

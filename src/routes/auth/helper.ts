@@ -16,7 +16,7 @@ const getJwtPayload = (user: any) => {
   };
 };
 
-const validateRegisterFields = ({ email, password, oauth, name }: any) => {
+const validateRegisterFields = ({ email, password, name }: any) => {
   if (!name.first || !name.last) {
     throw new StandardError({ message: 'First and last name is required', code: Status.UNPROCESSABLE_ENTITY });
   }

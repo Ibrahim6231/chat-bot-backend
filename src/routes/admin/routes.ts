@@ -32,7 +32,6 @@ export class AdminRoutes {
       res.locals.res_obj = { data };
 
       const resObj: any = {
-        code: Status.OK,
         data,
       };
       return res.status(Status.OK).send(resObj);
