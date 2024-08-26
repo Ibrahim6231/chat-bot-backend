@@ -25,6 +25,7 @@ app.get('*', (req, res) => {
 
 
 {
+    //here I have intentionally added some logic to hide DB password, this can be more simpler
     let PATH = process.env.DB_PATH || 'mongodb://localhost:27017/boilerplate';
     if (PATH.includes("password")) {
         PATH = PATH.replace("password", envConfig.KEY_M);
@@ -34,7 +35,6 @@ app.get('*', (req, res) => {
     mongoose.set('useCreateIndex', true);
     mongoose.set('useUnifiedTopology', true);
     mongoose.connect(PATH);
-    console.log({PATH})
 
     const db = mongoose.connection;
     db.on('error', console.error.bind(console, 'db connection error:'));

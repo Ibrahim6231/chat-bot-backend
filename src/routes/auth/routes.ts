@@ -10,7 +10,7 @@ import { Status } from '../../enum/httpStatus';
 import { getJwtPayload, validateRegisterFields, validateToken } from './helper';
 import { User } from '../../models/user';
 import { Invite } from '../../models/inviteUsers';
-import { InviteStatus } from '../../enum/modelsEnum';
+import { InviteStatus, UserRole } from '../../enum/modelsEnum';
 
 
 export class AuthRoutes {
@@ -19,9 +19,8 @@ export class AuthRoutes {
   public static register = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
     try {
 
-      let { email, password, oauth, name } = req.body.user;
+      let { email, password, name } = req.body.user;
       email = email.toLowerCase().trim();
-
 
       validateRegisterFields(req.body.user);
 
@@ -49,8 +48,8 @@ export class AuthRoutes {
       const user = await User.create({
         email,
         name,
-        oauth,
         password: hash,
+        role: isInvitedUser.role || UserRole.USER
       })
 
 
