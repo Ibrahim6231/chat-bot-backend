@@ -8,7 +8,8 @@
     "tsc-watch": "tsc --watch",
     "dev": "nodemon dist/index.js",
     "build": "tsc",
-    "start": "node dist/index.js"
+    "start": "node dist/index.js",
+    "test": "npx tsc && npx jest"
   },
   "repository": {
     "type": "git",
