@@ -3,5 +3,6 @@ config();
 
 export const envConfig = {
     JWT_SECRET: process.env.JWT_SECRET || "chatbot-app-scerectKey",
-    KEY_M: process.env.KEY_M || ""
+    KEY_M: process.env.KEY_M || "",
+    FRONTEND_URL: 3000
 } 

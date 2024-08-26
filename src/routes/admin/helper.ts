@@ -6,9 +6,10 @@ import { Status } from '../../enum/httpStatus';
 import { EmailService } from '../../services/email';
 import { Invite } from '../../models/inviteUsers';
 import { InviteStatus } from '../../enum/modelsEnum';
+import { envConfig } from '../../config/config';
 
-const FRONTEND_URL = process.env.FRONTEND_URL;
-const JWT_SECRET = process.env.JWT_SECRET;
+const FRONTEND_URL = envConfig.FRONTEND_URL
+const JWT_SECRET = envConfig.JWT_SECRET;
 
 const inviteUsersHelper = async ({ email, role }) => {
 

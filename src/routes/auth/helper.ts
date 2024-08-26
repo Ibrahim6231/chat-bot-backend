@@ -1,10 +1,11 @@
+import { envConfig } from './../../config/config';
 import jwt from 'jsonwebtoken';
 import StandardError from 'standard-error';
 import validator from 'validator';
 import { LOGIN_TOKEN_EXPIRY } from '../../constants/common';
 import { Status } from '../../enum/httpStatus';
 
-const JWT_SECRET = process.env.JWT_SECRET;
+const JWT_SECRET = envConfig.JWT_SECRET;
 
 const getJwtPayload = (user: any) => {
   return {
