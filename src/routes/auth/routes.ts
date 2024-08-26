@@ -14,7 +14,7 @@ import { InviteStatus, UserRole } from '../../enum/modelsEnum';
 
 
 export class AuthRoutes {
-  static JWT_SECRET: string = envConfig.JWT_SECRET || 'i am a tea pot';
+  static JWT_SECRET: string = envConfig.JWT_SECRET || "chatbot-app-scerectKey";
 
   public static register = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
     try {
