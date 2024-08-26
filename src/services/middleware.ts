@@ -25,7 +25,7 @@ export class Middleware {
 
 
             if (!decode) {
-                console.log({token, decode, })
+                console.log({token, decode, "jwtsec": JWT_SECRET })
                 throw new StandardError({ code: Status.UNAUTHORIZED, message: "invalid token" });
             }
 
