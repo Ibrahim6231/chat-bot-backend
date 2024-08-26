@@ -13,8 +13,8 @@ import { Invite } from '../../models/inviteUsers';
 import { InviteStatus, UserRole } from '../../enum/modelsEnum';
 
 
+const JWT_SECRET: string = envConfig.JWT_SECRET || "chatbot-app-scerectKey";
 export class AuthRoutes {
-  static JWT_SECRET: string = envConfig.JWT_SECRET || "chatbot-app-scerectKey";
 
   public static register = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
     try {
@@ -53,7 +53,7 @@ export class AuthRoutes {
       })
 
 
-      const generatedToken = jwt.sign(getJwtPayload(user), AuthRoutes.JWT_SECRET);
+      const generatedToken = jwt.sign(getJwtPayload(user), JWT_SECRET);
 
       const resObj: any = {};
       resObj.data = { token: generatedToken, user };
@@ -78,7 +78,7 @@ export class AuthRoutes {
         throw new StandardError({ message: 'Invalid credentials, Enter correct email & password', code: Status.NOT_FOUND });
       }
 
-      const generatedToken = jwt.sign(getJwtPayload(user), AuthRoutes.JWT_SECRET);
+      const generatedToken = jwt.sign(getJwtPayload(user), JWT_SECRET);
 
       const resObj: any = {};
       resObj.data = { token: generatedToken, user };
