@@ -9,8 +9,8 @@ import { envConfig } from '../config/config';
 import { UserHelper } from '../routes/user/helper';
 
 
+const JWT_SECRET: string = envConfig.JWT_SECRET || "chatbot-app-scerectKey";
 export class Middleware {
-    static JWT_SECRET: string = envConfig.JWT_SECRET || 'i am secret key';
 
     public authenticateUser = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
         try {
@@ -18,13 +18,16 @@ export class Middleware {
             const token = req.headers.authorization;
             if (!token) throw new StandardError({ code: Status.UNAUTHORIZED, message: "token required" });
 
-            const decode: any = jwt.verify(token, Middleware.JWT_SECRET, (err, decoded) => {
+            const decode: any = jwt.verify(token, JWT_SECRET, (err, decoded) => {
                 if (err) return false
                 else return decoded
             });
 
 
-            if (!decode) throw new StandardError({ code: Status.UNAUTHORIZED, message: "invalid token" });
+            if (!decode) {
+                console.log({token, decode, })
+                throw new StandardError({ code: Status.UNAUTHORIZED, message: "invalid token" });
+            }
 
             const user = await UserHelper.findById(decode.id);
             if (!user) {
